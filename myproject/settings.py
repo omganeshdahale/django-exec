@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+import sys
 from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -74,13 +78,20 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+pathname = os.path.dirname(sys.argv[0])
+db_path = os.path.join(os.path.abspath(pathname), "db.sqlite3")
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': db_path,
     }
 }
 
+# print("Database path ==>", DATABASES['default']['NAME'])
+# print("sys.argv[0] ==>", sys.argv[0])
+# print("Pathname ==>", os.path.dirname(pathname))
+# print("Abs pathname ==>", os.path.abspath(pathname))
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

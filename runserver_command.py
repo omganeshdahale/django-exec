@@ -188,5 +188,5 @@ class Command(BaseCommand):
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
 django.setup()
-Command().execute(no_color=True, force_color=False, use_ipv6=True, addrport="8000", use_reloader=False, use_threading=True, skip_checks=False)
+Command().execute(no_color=True, force_color=False, use_ipv6=False, addrport="8000", use_reloader=False, use_threading=True, skip_checks=False)
 
